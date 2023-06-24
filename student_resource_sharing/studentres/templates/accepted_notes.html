@@ -2,14 +2,14 @@
 {% load static %}
 {%block body%}
 
-{% if error =="no" %}
+{% if error == "no" %}
     <script>
         alert();
     // window.location.href="{% url 'profile' %}";
     </script>
 {% endif %}
 
-{% if error== "yes" %}
+{% if error == "yes" %}
     <script>
         alert('Something went wrong, Try Again');
     </script>

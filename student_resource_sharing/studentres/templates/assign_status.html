@@ -7,30 +7,18 @@
 
 
 
-{%  ifequal error "no" %}
+{%if error == "no" %}
+    <script>
+        alert();
+        window.location.href="{% url 'all_notes' %}";
+    </script>
+{% endif %}
 
-<script>
-
-    alert('Status Updated Successfullly');
-
-    window.location.href="{% url 'all_notes' %}";
-
-</script>
-
-{% endifequal %}
-
-
-
-
-{% ifequal error "yes" %}
-
-<script>
-
-    alert('Something went wrong, Try Again');
-
-</script>
-
-{% endifequal %}
+{% if error == "yes" %}
+    <script>
+        alert('Something went wrong, Try Again');
+    </script>
+{%endif%}
 
 
 
