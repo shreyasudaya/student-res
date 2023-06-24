@@ -2,3 +2,7 @@ asgiref
 Django
 pytz
 sqlparse
+pymongo
+dnspython
+mongoengine
+djongo
