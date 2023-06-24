@@ -1,5 +1,3 @@
-# Student resource system
-
 # A student resources sharing platform
 
 This platform aims to share notes, ppts, assignments and such among the common faculty and students of institute. The website has been done in Django, with SQLite3 as backup.
