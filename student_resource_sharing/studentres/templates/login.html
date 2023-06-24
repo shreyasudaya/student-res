@@ -1,0 +1,31 @@
+{%extends 'navigation.html'%}
+{%load static%}
+{%block body%}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 class="text-center">
+                New User
+            </h2>
+            <hr>
+            <p>Create New Account</p>
+            <a href="{%url 'signup'%}" class="btn btn-danger text-center mt-5">Sign Up</a>
+        </div>
+        <div class="col-sm-6">
+            <h2 class="text-center">
+                User Login
+            </h2>
+            <hr>
+            <form method="POST">
+                {%csrf_token%}
+            <label>Email Address</label>
+                    <input type="email" class="form-control" placeholder="enter college mail" name="emailid">
+            <label>Password</label>
+                    <input type="password" class="form-control"placeholder="enter password" name="pwd">
+                    <input type="submit" class="btn btn-danger mt-3" value="Sign In">
+            </form>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
