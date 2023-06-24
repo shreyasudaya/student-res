@@ -5,7 +5,7 @@
         <title>Notesly</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="icon" href="static/images/myicon.png">
         <link rel="stylesheet" href="static/css/mystyle.css">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -45,13 +45,10 @@
 
                 <div class="dropdown-menu">
 
-                    <a class="dropdown-item" href="#">Pending</a>
-
-                    <a class="dropdown-item" href="#">Accepted</a>
-
-                    <a class="dropdown-item" href="#">Rejected</a>
-
-                    <a class="dropdown-item" href="#">All</a>
+                    <a class="dropdown-item" href="{%url 'pending_notes'%}">Pending</a>
+                    <a class="dropdown-item" href="{%url 'accepted_notes'%}">Accepted</a>
+                    <a class="dropdown-item" href="{%url 'rejected_notes'%}">Rejected</a>
+                    <a class="dropdown-item" href="{%url 'all_notes'%}">All</a>
 
                 </div>
 
@@ -59,7 +56,7 @@
 
             <li class="navbar-item">
 
-                <a class="nav-link" href="{%url 'contact'%}">View Users</a>
+                <a class="nav-link" href="{%url 'view_users'%}">View Users</a>
 
             </li>
 
