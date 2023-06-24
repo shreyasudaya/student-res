@@ -2,26 +2,25 @@
 {%load static%}
 {%block body%}
 
-{%ifequal error "no" %}
+{%if error == "no"%}
 <script>
-    alert('Signed Up Successfully');
+    alert('Logged in Successfully');
     window.location.href="{% url 'login' %}";
 </script>
-{% endifequal %}
+{% endif %}
 
-{% ifequal error "yes" %}
-<script>
-    alert('Something went wrong, Try Again');
-</script>
-{% endifequal %}
-
+{% if error == "yes" %}
+    <script>
+        alert('Invalid Login Credentials, Try Again');
+    </script>
+{% endif %}
 
 <div class="container mt-5">
     <div class="row">
-        
+
         <div class="col-sm-6">
             <h2 class="text-center">
-                Registration Page | Share N Learn
+                Register 
             </h2>
             <hr>
             <form method="POST">
@@ -38,12 +37,15 @@
                 <input type="password" class="form-control" placeholder="Enter your Password" name="password">
             <label>Department</label>
             <select class="form-control" name="branch">
-                <option value="CSE">Computer Science & Engineering</option>
+                <option value="CSE">Computer Science Engineering</option>
                 <option value="IT">Information Technology</option>
-                <option value="ECE">Electronics & Communication Engineering</option>
+                <option value="ECE">Electronics Communication Engineering</option>
                 <option value="EE">Electrical Engineering</option>
                 <option value="ME">Mechanical Engineering</option>
+                <option value="CHE">Chemical Engineering</option>
                 <option value="CE">Civil Engineering</option>
+                <option value="MTE">Metallurgical Engineering</option>
+                <option value="MIE">Mining Engineering</option>
             </select>
             <label>Role</label>
             <select class="form-control" name="role">
@@ -53,21 +55,19 @@
             <input type="submit" class="btn btn-danger mt-3" value="Submit">
             </form>
         </div>
-        
+
     </div>
 </div>
+{% if error == "no" %}
+    <script>
+        alert('Signed Up Successfully');
+        window.location.href = "{% url 'login' %}";
+    </script>
+{% endif %}
 
-{%  ifequal error "no" %}
-<script>
-    alert('Signed Up Successfully');
-    window.location.href="{% url 'login' %}";
-</script>
-{% endifequal %}
-
-{% ifequal error "yes" %}
-<script>
-    alert('Something went wrong, Try Again');
-</script>
-{%endifequal%}
-
-{%endblock%}
+{% if error == "yes" %}
+    <script>
+        alert('Something went wrong, Try Again');
+    </script>
+{% endif %}
+{% endblock %}

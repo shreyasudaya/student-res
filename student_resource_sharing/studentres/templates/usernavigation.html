@@ -4,13 +4,13 @@
 
         {% load static %}
 
-        <title>Share N Learn</title>
+        <title>Notesly</title>
 
         <meta charset="utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="static/css/mystyle.css">
+        <link type="text/css" rel="stylesheet" href="static/css/mystyle.css">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -24,7 +24,7 @@
 
         <!-- link static files with templates -->
 
-        <link rel="stylesheet" href ="% static css/mystyle.css %">
+        <link type="text/css" rel="stylesheet" href ="{% static 'css/mystyle.css' %}%">
 
     </head>
 
@@ -78,7 +78,7 @@
 
                     <a class="dropdown-item"  href="{% url 'profile' %}">Profile</a>
 
-                    <a class="dropdown-item"  href="#">Edit Profile</a>
+                    <a class="dropdown-item"  href="{%url 'edit_profile'%}">Edit Profile</a>
 
                     <a class="dropdown-item"  href="{% url 'changepassword' %}">Change Password</a>  
 

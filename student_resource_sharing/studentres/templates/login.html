@@ -1,6 +1,18 @@
 {%extends 'navigation.html'%}
 {%load static%}
 {%block body%}
+{% if error == "no" %}
+<script>
+    alert('Logged in Successfully');
+    window.location.href = "{% url 'profile' %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong, Try Again');
+</script>
+{% endif %}
 <div class="container mt-5">
     <div class="row">
         <div class="col-sm-6">

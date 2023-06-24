@@ -31,5 +31,7 @@ urlpatterns = [
     path('logout',Logout,name="logout"),
     path('profile',profile,name="profile"),
     path('profile',profile,name="profile"),
-    path('changepassword',changepassword,name="changepassword")
+    path('changepassword',changepassword,name="changepassword"),
+    path('changepassword',changepassword,name="changepassword"),
+    path('edit_profile',edit_profile,name="edit_profile")
 ]
