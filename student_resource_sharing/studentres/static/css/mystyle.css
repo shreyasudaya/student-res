@@ -1,0 +1,15 @@
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
+.nav-link {color: rgb(92, 128, 171);}
+
+body{
+    margin:0;
+    text-transform: uppercase;
+    font-size: 3em;
+    letter-spacing: 0.1em;
+    color: rgb(143, 93, 93);
+    animation: rotate 2s ease-in-out alternate infinite;
+  }
+h1{
+    text-align: center;
+}
