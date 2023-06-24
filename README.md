@@ -43,3 +43,13 @@ Code editor preferred if vs code is used.
 - integrate with a NoSQL database such as through Firebase or MongoDB
 - Add filter system which allows filtering of notes by Branch and file type.
 
+# Types of Users and accounts to use if you are too lazy to sign up.
+- Account 1: Type faculty
+        -email: shreekararajendra.211cs152@nitk.edu.in
+        -password: 123456
+- Account 2: Type normal student user
+        -email: shreyasudaya.211cs152@nitk.edu.in
+        -password: 123456
+- Account 3: Type admin: Use in admin login you can navigate to by clicking admin in top right navbar.
+        -email: bofadeesnatsu@gmail.com
+        -password: 1234567
