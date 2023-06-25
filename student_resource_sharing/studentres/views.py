@@ -6,7 +6,7 @@ from django.core.mail import EmailMultiAlternatives, message, send_mail
 from datetime import date
 from django.contrib import messages
 from django.db import IntegrityError
-from django.http import HttpResponse,HttpRequest
+from django.http import HttpResponse,HttpRequest,HttpResponseBadRequest
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 # Create your views here.
@@ -27,7 +27,7 @@ def Logout(request) :
     return redirect('index')
 
 
-
+# User authentication
 def userlogin(request) :
     error=""
     if request.method == 'POST':
@@ -106,6 +106,7 @@ def profile(request) :
     data = Signup.objects.get(user = user)
     d = {'data':data,'user':user}
     return render(request, 'profile.html',d)
+#Edit profile 
 
 def edit_profile(request) :
     if not request.user:
@@ -147,6 +148,7 @@ def changepassword(request):
             error="yes"
     d={'error':error}
     return render(request, 'changepassword.html',d)
+
 #Notes and actions
 def upload_notes(request) :
     if not request.user.is_authenticated:
@@ -168,6 +170,7 @@ def upload_notes(request) :
     d = {'error':error}
     return render(request, 'upload_notes.html', d)
 
+# View own notes
 def view_usernotes(request) :
     if not request.user:
         return redirect('login')
@@ -176,6 +179,16 @@ def view_usernotes(request) :
     d = {'notes':notes,}
     return render(request, 'view_usernotes.html',d)
 
+#Show all uploads
+def viewall_usernotes(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    notes = Notes.objects.filter(status="Accepted")
+    d = {'notes':notes}
+    return render(request, 'viewall_usernotes.html', d)
+
+#If admin, delete notes 
+
 def delete_usernotes(request,pid) :
     if not request.user:
         return redirect('login')
@@ -183,7 +196,8 @@ def delete_usernotes(request,pid) :
     notes.delete()
     return redirect('view_usernotes')
 
-#User actions by admins
+"""Following are for the admin actions which can be accessed through admin login"""
+#View users
 def view_users(request) :
     if not request.user.is_staff:
         return redirect('login')
@@ -192,6 +206,7 @@ def view_users(request) :
     d = {'users':users}
     return render(request, 'view_users.html', d)
 
+#Delete users who post idiotic things
 
 def delete_users(request,pid) :
     if not request.user:
@@ -200,6 +215,8 @@ def delete_users(request,pid) :
     users.delete()
     return redirect('view_users')
 
+# Notes requiring approval 
+
 def pending_notes(request) :
     if not request.user.is_authenticated:
         return redirect('login_admin')
@@ -207,6 +224,8 @@ def pending_notes(request) :
     notes = Notes.objects.filter(status = "pending")
     d = {'notes':notes,}
     return render(request, 'pending_notes.html',d)
+
+# Decide whether notes pending, approved or rejected
 
 def assign_status(request,pid) :
     if not request.user.is_authenticated:
@@ -224,6 +243,10 @@ def assign_status(request,pid) :
     d={'notes':notes,'error':error}
     return render(request, 'assign_status.html',d)
 
+
+
+# Notes which are accepted 
+
 def accepted_notes(request):
     if not request.user.is_authenticated:
         return redirect('login_admin')
@@ -231,12 +254,15 @@ def accepted_notes(request):
     d = {'notes':notes}
     return render(request, 'accepted_notes.html', d)
 
+# Notes which are rejected
 def rejected_notes(request):
     if not request.user.is_authenticated:
         return redirect('login_admin')
     notes = Notes.objects.filter(status="Rejected")
     d = {'notes':notes}
     return render(request, 'rejected_notes.html', d)
+
+# Show all notes
 
 def all_notes(request):
     if not request.user.is_authenticated:
@@ -245,24 +271,23 @@ def all_notes(request):
     d = {'notes':notes}
     return render(request, 'all_notes.html', d)
 
-def delete_notes(request,pid) :
-    if not request.user:
-        return redirect('login')
-    notes = Notes.objects.get(id = pid)
-    notes.delete()
+# Delete the notes by admin
+
+def delete_notes(request, pid):
+    try:
+        notes = Notes.objects.get(id=pid)
+        if notes.user == request.user:
+            notes.delete()
+        else:
+            return HttpResponseBadRequest("Cannot delete the notes.")
+    except :
+        return HttpResponseBadRequest("Cannot delete the notes.")
     return redirect('all_notes')
 
 
-def viewall_usernotes(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
-    notes = Notes.objects.filter(status="Accepted")
-    d = {'notes':notes}
-    return render(request, 'viewall_usernotes.html', d)
-
 #Make Review
-
-
+'''Review options'''
+#Rating
 def rate(request: HttpRequest, notes_id: int, rating: int) -> HttpResponse:
     if not request.user.is_authenticated:
         return redirect('login')
@@ -270,7 +295,7 @@ def rate(request: HttpRequest, notes_id: int, rating: int) -> HttpResponse:
     Review.objects.filter(notes=notes, user=request.user).delete()
     notes.rating_set.create(user=request.user, rating=rating)
     return index(request)
-
+#Make review
 def review(request, notes_id):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -287,7 +312,7 @@ def review(request, notes_id):
             error="yes"
     d = {'error':error}
     return render(request, 'review.html', d)
-
+#See review
 def see_review(request, notes_id):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -299,3 +324,46 @@ def see_review(request, notes_id):
         'notes': notes
     }
     return render(request, "see_review.html", context)
+
+#Admin and actions on reviews
+
+def delete_review(request,pid) :
+    if not request.user:
+        return redirect('login')
+    try:
+        review = Review.objects.get(id=pid)
+        if review.user == request.user:
+            review.delete()
+        else:
+            return HttpResponseBadRequest("Cannot delete the notes.")
+    except:
+        return HttpResponseBadRequest("Cannot delete the notes.")
+    return redirect('viewall_usernotes')
+
+
+def delete_review_admin(request,pid) :
+    if not request.user:
+        return redirect('login')
+    try:
+        review = Review.objects.get(id=pid)
+        if request.user.is_staff:
+            review.delete()
+        else:
+            return HttpResponseBadRequest("Cannot delete the notes.")
+    except:
+        return HttpResponseBadRequest("Cannot delete the notes.")
+    return redirect('admin_reviews')
+
+#Admin review
+
+def admin_reviews(request, pid):
+    if not request.user.is_staff:
+        return redirect('login_admin')
+    reviews =  Review.objects.all()
+    notes = get_object_or_404(Notes, pk=pid)
+    reviews =  Review.objects.filter(notes=notes)
+    context = {
+        'reviews': reviews,
+        'notes': notes
+    }
+    return render(request, "admin_reviews.html", context)

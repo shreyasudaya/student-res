@@ -2,11 +2,7 @@
 {% load static %}
 {%block body%}
 
-.my-link-class {
-    color: blue; /* Change link color */
-    text-decoration: underline; /* Add underline */
-    /* Add any other desired styles */
-  }
+
 {% if error == "no" %}
     <script>
         alert();
@@ -51,7 +47,6 @@ $(document).ready(function() {
                 <th>Description</th>
                 <th>Status</th>
                 <th>Rating</th>
-                <th>Action</th>
                 <th>Review</th>
                 <th>Reviews</th>
             </tr>
@@ -69,7 +64,6 @@ $(document).ready(function() {
                 <td>{{i.description}}</td>
                 <td>{{i.status}}</td>
                 <td>{{i.average_rating|floatformat:2 }}</td>
-                <td><a href="{% url 'delete_usernotes' i.id %}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a></td>
                 <td><a href="{% url 'review' i.id%}" class="my-link-class">Write Review</a></td>
                 <td><a href="{% url 'see_review' i.id%}" class="my-link-class">See Reviews</a></td>
             </tr>

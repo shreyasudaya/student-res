@@ -57,7 +57,7 @@ $(document).ready(function() {
                 <td>{{i.description}}</td>
                 <td>{{i.status}}</td>
                 <td>{{i.average_rating}}</td>
-                <td><a href="{% url 'delete_usernotes' i.id %}" download class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a></td>
+                <td><a href="{% url 'delete_usernotes' i.id %}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a></td>
             </tr>
 
             {% endfor %}
