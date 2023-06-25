@@ -35,13 +35,13 @@ Code editor preferred if vs code is used.
 # Features implemented
 
 - File upload
-- User authentication(While signing up, it would be preferred to use '.nitk.edu.in' email id)
-- Admin authentication(note: works different than user authentication)
+- User authentication.
+- Admin authentication(note: works different than user authentication and will require terminal to create.)
 - Admin has various privileges such as determining status of files. Through admin one can view all users and delete the users.
-
+- Rating and review system(Bonus)
 # Tentative to do
 
-- add rating review system to models.
+- Allow admins to delete irrelevant reviews.
 - integrate with a NoSQL database such as through Firebase or MongoDB
 - Add filter system which allows filtering of notes by Branch and file type.
 
