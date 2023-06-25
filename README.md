@@ -35,7 +35,7 @@ Code editor preferred if vs code is used.
 - File upload
 - User authentication(While signing up, it would be preferred to use '.nitk.edu.in' email id)
 - Admin authentication(note: works different than user authentication)
-- Admin has various privileges such as determining status of files.
+- Admin has various privileges such as determining status of files. Through admin one can view all users and delete the users.
 
 # Tentative to do
 
