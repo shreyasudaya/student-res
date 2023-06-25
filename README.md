@@ -37,11 +37,11 @@ Code editor preferred if vs code is used.
 - File upload
 - User authentication.
 - Admin authentication(note: works different than user authentication and will require terminal to create an admin.)
-- Admin has various privileges such as determining status of files. Through admin one can view all users and delete the users.
-- Rating and review system(Bonus)
+- Rating and review system(Bonus). Users may leave review and see reviews. Ratings also there for notes.
+- Users can edit their profile, change password.
+- One can delete the notes, reviews and etc.
 # Tentative to do
 
-- Allow admins to delete irrelevant reviews.
 - integrate with a NoSQL database such as through Firebase or MongoDB
 - Add filter system which allows filtering of notes by Branch and file type.
 
