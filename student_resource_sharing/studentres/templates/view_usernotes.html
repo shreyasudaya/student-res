@@ -40,7 +40,9 @@ $(document).ready(function() {
                 <th>Filetype</th>
                 <th>Description</th>
                 <th>Status</th>
+                <th>Rating</th>
                 <th>Action</th>
+                
             </tr>
             </thead>
             <tbody>
@@ -54,8 +56,10 @@ $(document).ready(function() {
                 <td>{{i.filetype}}</td>
                 <td>{{i.description}}</td>
                 <td>{{i.status}}</td>
+                <td>{{i.average_rating}}</td>
                 <td><a href="{% url 'delete_usernotes' i.id %}" download class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a></td>
             </tr>
+
             {% endfor %}
         </tbody>
     </table>

@@ -1,0 +1,40 @@
+{% extends 'usernavigation.html' %}
+{% load static %}
+
+{% block body %}
+
+{% if error == "no" %}
+    <script>
+        alert('Review submitted');
+        window.location.href="{% url 'viewall_usernotes' %}";
+    </script>
+{% endif %}
+
+{% if error == "yes" %}
+    <script>
+        alert('Something went wrong, Try Again');
+    </script>
+{% endif %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <h2 class="text-center font-weight-bold">Write Review</h2>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        <form method="post" enctype="multipart/form-data" class="w-50">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <input type="number" class="form-control" id="rating" placeholder="Enter Rating" name="rating" min="1" max="5">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" placeholder="Enter Description" name="description">
+            </div>
+            <input type="submit" class="btn btn-danger mt-3" value="Submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
