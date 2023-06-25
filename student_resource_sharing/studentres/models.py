@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Avg
 # Create your models here.
 
 class Signup(models.Model):
@@ -20,6 +21,18 @@ class Notes(models.Model):
     filetype = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     status = models.CharField(max_length=15)
+    
+    def average_rating(self) -> float:
+        return self.review_set.aggregate(Avg('rating'))['rating__avg'] or 0
 
     def __str__(self):
         return self.signup.user.username+" "+self.status
+    
+class Review(models.Model):
+    notes = models.ForeignKey(Notes, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    rating = models.IntegerField()
+    def __str__(self):
+        return f"{self.user.username}:{self.rating}"

@@ -11,14 +11,14 @@ Code editor preferred if vs code is used.
 
 1. Clone the above repository using ```git clone https://github.com/shreyasudaya/student-res```
 
-2. Navigate to repository using ```cd student-res/student_resource_sharing```
+2. Navigate to repository using ```cd student-res```
 
 3. Activate virtual environment as per directions in directory:
         - ```python -m venv venv``` 
         - ```venv/bin/activate``` if the venv shows Scripts instead of bin, replace with Scripts instead. Just make sure you use the path towards activating the venv.
     This will activate the virtual environment. 
 
-4. Install requirements using ```pip install -r requirements.txt``` 
+4. Now navigate to student_resource_sharing where source code is. Install requirements using ```pip install -r requirements.txt``` 
 
 5. Just to make sure migrations are in order:
         - run command ```python manage.py makemigrations```

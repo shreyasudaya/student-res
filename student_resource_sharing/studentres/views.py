@@ -6,6 +6,9 @@ from django.core.mail import EmailMultiAlternatives, message, send_mail
 from datetime import date
 from django.contrib import messages
 from django.db import IntegrityError
+from django.http import HttpResponse,HttpRequest
+from django.utils import timezone
+from django.shortcuts import get_object_or_404
 # Create your views here.
 #Basic login forms 
 def about(request):
@@ -256,3 +259,43 @@ def viewall_usernotes(request):
     notes = Notes.objects.filter(status="Accepted")
     d = {'notes':notes}
     return render(request, 'viewall_usernotes.html', d)
+
+#Make Review
+
+
+def rate(request: HttpRequest, notes_id: int, rating: int) -> HttpResponse:
+    if not request.user.is_authenticated:
+        return redirect('login')
+    notes = Notes.objects.get(id=notes_id)
+    Review.objects.filter(notes=notes, user=request.user).delete()
+    notes.rating_set.create(user=request.user, rating=rating)
+    return index(request)
+
+def review(request, notes_id):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    error=""
+    if request.method == 'POST':
+        r = request.POST['rating']
+        d = request.POST['description']
+        n = get_object_or_404(Notes, pk=notes_id)
+        u = User.objects.filter(username=request.user.username).first()
+        try:
+            Review.objects.create(user=u,description=d,rating=r,notes=n)
+            error="no"
+        except:
+            error="yes"
+    d = {'error':error}
+    return render(request, 'review.html', d)
+
+def see_review(request, notes_id):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    reviews =  Review.objects.all()
+    notes = get_object_or_404(Notes, pk=notes_id)
+    reviews =  Review.objects.filter(notes=notes)
+    context = {
+        'reviews': reviews,
+        'notes': notes
+    }
+    return render(request, "see_review.html", context)

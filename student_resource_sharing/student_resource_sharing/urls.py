@@ -19,9 +19,12 @@ from django.urls import path
 from studentres.views import *
 from django.conf import settings
 from django.conf.urls.static import static
-
+from studentres import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('rate/<int:notes_id>/<int:rating>/', views.rate),
+    path('review/<int:notes_id>/', review,name='review'),
+    path('see_review/<int:notes_id>/', see_review,name='see_review'),
     path('about',about,name='about') ,
     path('',index,name='index') ,
     path('contact',contact,name='contact'),
