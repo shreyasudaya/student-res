@@ -19,7 +19,7 @@ Code editor preferred if vs code is used.
   - ```python -m venv venv``` 
   - ```venv/bin/activate```
 
-    if the venv shows Scripts instead of bin, replace with Scripts instead. Just make sure you use the path towards activating the venv.
+    If the venv shows Scripts instead of bin, replace with Scripts instead. Just make sure you use the path towards activating the venv.
     This will activate the virtual environment. 
 
 4. Install requirements using ```pip install -r requirements.txt``` 
