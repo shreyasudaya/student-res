@@ -36,7 +36,7 @@ Code editor preferred if vs code is used.
 
 - File upload
 - User authentication.
-- Admin authentication(note: works different than user authentication and will require terminal to create.)
+- Admin authentication(note: works different than user authentication and will require terminal to create an admin.)
 - Admin has various privileges such as determining status of files. Through admin one can view all users and delete the users.
 - Rating and review system(Bonus)
 # Tentative to do
