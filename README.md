@@ -38,10 +38,9 @@ Code editor preferred if vs code is used.
 - Admin has various privileges such as determining status of files. Through admin one can view all users and delete the users.
 
 # Tentative to do
-
-- add rating review system to models.
 - integrate with a NoSQL database such as through Firebase or MongoDB
 - Add filter system which allows filtering of notes by Branch and file type.
+- Make a more practical UI for higher amt of databases
 
 # Types of Users and accounts to use if you are too lazy to sign up.
 - Account 1: Type faculty
