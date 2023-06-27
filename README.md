@@ -39,15 +39,7 @@ Code editor preferred if vs code is used.
 - Admin authentication(note: works different than user authentication)
 - Admin has various privileges such as determining status of files. Through admin one can view all users and delete the users.
 
-# Tentative to do
-- integrate with a NoSQL database such as through Firebase or MongoDB
-- Add filter system which allows filtering of notes by Branch and file type.
-- Make a more practical UI for higher amt of databases
-- User authentication.
-- Admin authentication(note: works different than user authentication and will require terminal to create an admin.)
-- Rating and review system(Bonus). Users may leave review and see reviews. Ratings also there for notes.
-- Users can edit their profile, change password.
-- One can delete the notes, reviews and etc.
+
 # Tentative to do
 
 - integrate with a NoSQL database such as through Firebase or MongoDB
