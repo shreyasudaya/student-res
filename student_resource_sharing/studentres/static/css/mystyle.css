@@ -1,7 +1,11 @@
 @import url(//fonts.googleapis.com/css?family=Lato:300:400);
 
 .nav-link {color: rgb(92, 128, 171);}
-
+.my-link-class{
+  color: blue; /* Change link color */
+  text-decoration: underline; /* Add underline */
+  /* Add any other desired styles */
+}
 body{
     margin:0;
     text-transform: uppercase;

@@ -18,6 +18,9 @@ Code editor preferred if vs code is used.
 3. Activate virtual environment as per directions in directory:
   - ```python -m venv venv``` 
   - ```venv/bin/activate``` if the venv shows Scripts instead of bin, replace with Scripts instead. Just make sure you use the path towards activating the venv.
+  - ```venv/bin/activate```
+
+    If the venv shows Scripts instead of bin, replace with Scripts instead. Just make sure you use the path towards activating the venv.
     This will activate the virtual environment. 
 
 4. Install requirements using ```pip install -r requirements.txt``` 
@@ -41,6 +44,15 @@ Code editor preferred if vs code is used.
 - integrate with a NoSQL database such as through Firebase or MongoDB
 - Add filter system which allows filtering of notes by Branch and file type.
 - Make a more practical UI for higher amt of databases
+- User authentication.
+- Admin authentication(note: works different than user authentication and will require terminal to create an admin.)
+- Rating and review system(Bonus). Users may leave review and see reviews. Ratings also there for notes.
+- Users can edit their profile, change password.
+- One can delete the notes, reviews and etc.
+# Tentative to do
+
+- integrate with a NoSQL database such as through Firebase or MongoDB
+- Add filter system which allows filtering of notes by Branch and file type.
 
 # Types of Users and accounts to use if you are too lazy to sign up.
 - Account 1: Type faculty
