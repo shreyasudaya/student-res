@@ -17,6 +17,7 @@ Code editor preferred if vs code is used.
 
 3. Activate virtual environment as per directions in directory:
   - ```python -m venv venv``` 
+  - ```venv/bin/activate``` if the venv shows Scripts instead of bin, replace with Scripts instead. Just make sure you use the path towards activating the venv.
   - ```venv/bin/activate```
 
     If the venv shows Scripts instead of bin, replace with Scripts instead. Just make sure you use the path towards activating the venv.
@@ -35,6 +36,14 @@ Code editor preferred if vs code is used.
 # Features implemented
 
 - File upload
+- User authentication(While signing up, it would be preferred to use '.nitk.edu.in' email id)
+- Admin authentication(note: works different than user authentication)
+- Admin has various privileges such as determining status of files. Through admin one can view all users and delete the users.
+
+# Tentative to do
+- integrate with a NoSQL database such as through Firebase or MongoDB
+- Add filter system which allows filtering of notes by Branch and file type.
+- Make a more practical UI for higher amt of databases
 - User authentication.
 - Admin authentication(note: works different than user authentication and will require terminal to create an admin.)
 - Rating and review system(Bonus). Users may leave review and see reviews. Ratings also there for notes.
